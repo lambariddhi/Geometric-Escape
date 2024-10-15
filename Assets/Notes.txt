@@ -1,0 +1,27 @@
+The code is imperfect; there are magic numbers all over the place, and 
+various other unstructured bits and bobs as you might expect in a small
+toy project.
+
+However, I tried to make the two models (state and observer) as clean
+as I could.  I expect that you will do the same with your own model
+project -- try to make the exemplar model itself as clean and clear
+as possible.
+
+STATE
+If you want to understand the state pattern, begin at the NPC and State 
+classes.  The core logic is all there.
+
+TimedState exists because Unity is peculiar about animations.  There is
+no built-in animationFinished boolean or function, so I created a 
+workaround since a number of states needed it.
+
+Unity actually has a built-in state library, StateMachineBehavior.  I
+avoided it because it allows you to *use* a state machine, but hides 
+away the underlying state logic that I wanted to make clear.
+
+As always, there are many variants of the state machine pattern.  The
+way I chose to implement has each state passing back the next state.
+Other implementations (such as StateMachineBehavior) make transitions
+into separate objects, and keep them out of the states themselves.
+
+OBSERVER
